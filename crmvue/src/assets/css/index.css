@@ -1,0 +1,65 @@
+nav.navbar.navbar-inverse {
+  border-radius: 0px;
+  margin: 0px;
+}
+
+.icons {
+  margin-right: 9px;
+}
+
+.mainHeader.row {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  box-shadow: 33px 0px 36px 7px #ccc;
+}
+
+/* .headerButtons {
+  text-align: right;
+  padding-right: 50px;
+}
+
+.headerHeading {
+  padding-left: 50px;
+  margin-top: 2px;
+  font-weight: bold;
+  font-size: 20px;
+} */
+.mainHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  box-shadow: 33px 0px 36px 7px #ccc;
+}
+
+.blocks {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.blockRow {
+  border-bottom: 1px solid #ccc
+}
+
+.btn-success {
+  padding: 8px 18px 5px 9px;
+}
+
+th {
+  background-color: #5b66b5;
+  color: white;
+  text-align: center
+}
+
+.table-responsive {
+  border: 1px solid #bcc6e8;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.addFamily {
+  width: 55%;
+  margin: 0 auto;
+}
