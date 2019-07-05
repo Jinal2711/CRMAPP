@@ -49,7 +49,7 @@
               <th>Birth Date</th>
               <th>CRM ID</th>
               <th>Gender</th>
-
+              <th>Image</th>
               <th colspan="2">Options</th>
             </tr>
           </thead>
@@ -66,6 +66,13 @@
               <td>{{client.dob}}</td>
               <td>{{client.crmId}}</td>
               <td>{{client.gender == 1 ? 'Male' : 'Female'}}</td>
+              <td>
+                <img
+                  v-if="client.file != null"
+                  :src="`http://localhost:3000/${client.file.replace('public/', '')}`"
+                  style="width:100px;height:100px"
+                >
+              </td>
               <td>
                 <router-link :to="`/editClient/${client.id}`" class="btn btn-success">
                   <span class="glyphicon glyphicon-pencil icons"></span>Edit

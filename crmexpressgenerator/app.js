@@ -16,6 +16,7 @@ var bodyParser = require('body-parser')
 var cors = require('cors');
 
 var app = express();
+app.use(express.static('/'))
 app.use(cors());
 
 app.use(logger('dev'));

@@ -46,8 +46,9 @@ CREATE TABLE `clients` (
   `dob` date DEFAULT NULL,
   `vatId` varchar(100) DEFAULT NULL,
   `taxCode` varchar(100) DEFAULT NULL,
+  `file` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -56,7 +57,7 @@ CREATE TABLE `clients` (
 
 LOCK TABLES `clients` WRITE;
 /*!40000 ALTER TABLE `clients` DISABLE KEYS */;
-INSERT INTO `clients` VALUES (1,1,'Jinal','Vaghasiya','English','dahisar','borivali','mumbai','maharashtra','400068','India','8976601351','fax1234','9920367546','jinal@gmailcom','http://jinal.com','crm123','Female','1995-11-27','vat123','12345'),(4,0,'Alvin abc','Methew','English','addr2','addr1','mumbai','maharashtra','123456','Australia','8976601351','fax123456','9920367546','jinalbvaghasiya@gmail.com','http:google.com','2134567','1','2019-07-12','vatId','234567'),(5,1,'Kelwin','Fernandiz','Spanish','Dadar','Andheri','mumbai','maharashtra','123456','01','8976601351','fax123456','9920367546','jinal@sportzinteractive.net','','01020303','01','2019-06-14','VAT12345','TAX1234567'),(8,1,'Alvin abc','Methew','','addr2','addr1','mumbai','maharashtra','123456','03','8976601351','fax123456','9920367546','jinalbvaghasiya@gmail.com','http:google.com','2134567','02','2019-07-25','vatId','234567'),(9,0,'Febin','Xavier','English','addr2','addr1','mumbai','maharashtra','123456','India','8976601351','fax123456','9920367546','jinal@sportzinteractive.net','addr2','01020303','1','2019-07-31','VAT12345','TAX1234567'),(10,0,'Jason','Dsouza','English','addr2','addr1','mumbai','maharashtra','123456','Australia','8976601351','fax123456','9920367546','jason@gmail.com','http://Jason.com','01020303','1','2019-07-25','VAT123','TaXABC1234'),(11,0,'Alisha','Vaz','Marathi','addr2','addr1','mumbai','maharashtra','123456','','8976601351','fax123456','9920367546','jinal@sportzinteractive.net','http:Alisha.com','4001234','2','2019-07-27','VAT123','TaXABC1234');
+INSERT INTO `clients` VALUES (4,0,'Alvin abc','Methew','English','addr2','addr1','mumbai','maharashtra','123456','Australia','8976601351','fax123456','9920367546','jinalbvaghasiya@gmail.com','http:google.com','2134567','1','2019-07-12','vatId','234567',NULL),(5,1,'Kelwin','Fernandiz','Spanish','Dadar','Andheri','mumbai','maharashtra','123456','01','8976601351','fax123456','9920367546','jinal@sportzinteractive.net','','01020303','01','2019-06-14','VAT12345','TAX1234567',NULL),(8,1,'Alvin abc','Methew','','addr2','addr1','mumbai','maharashtra','123456','03','8976601351','fax123456','9920367546','jinalbvaghasiya@gmail.com','http:google.com','2134567','02','2019-07-25','vatId','234567',NULL),(9,0,'Febin','Xavier','English','addr2','addr1','mumbai','maharashtra','123456','India','8976601351','fax123456','9920367546','jinal@sportzinteractive.net','addr2','01020303','1','2019-07-31','VAT12345','TAX1234567',NULL),(10,0,'Jason','Dsouza','English','addr2','addr1','mumbai','maharashtra','123456','Australia','8976601351','fax123456','9920367546','jason@gmail.com','http://Jason.com','01020303','1','2019-07-25','VAT123','TaXABC1234',NULL),(11,0,'Alisha','Vaz','Marathi','addr2','addr1','mumbai','maharashtra','123456','','8976601351','fax123456','9920367546','jinal@sportzinteractive.net','http:Alisha.com','4001234','2','2019-07-27','VAT123','TaXABC1234',NULL),(14,0,'','','','','','','','','','','','','','','','2','2019-07-18','','','/images/profile-1562247247789.png'),(15,1,'Alvin abc','Fernandiz','','addr2','addr1','mumbai','maharashtra','123456','','8976601351','fax123456','9920367546','S@gmail.com','addr2','4001234','1','2019-07-26','VAt34455','TaXABC1234','public/images/profile-1562250079578.png');
 /*!40000 ALTER TABLE `clients` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -184,4 +185,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-07-03 19:15:30
+-- Dump completed on 2019-07-05 18:02:49

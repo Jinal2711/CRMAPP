@@ -1,6 +1,33 @@
 var express = require('express');
+var multer = require('multer');
 var router = express.Router();
 var connection = require('../connection');
+var path = require('path');
+
+var storage = multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, "public/images/");
+  },
+  filename: function (req, file, callback) {
+    let extentionarr = file.originalname.split(".");
+    let extention = extentionarr[extentionarr.length - 1];
+    callback(null, "profile" + "-" + Date.now() + '.' + extention);
+  }
+});
+
+var upload = multer({
+  storage: storage
+})
+
+router.post("/upload", upload.single('imageUploader'), (req, res) => {
+  const file = req.file
+  if (!file) {
+    const error = new Error('Please upload a file')
+    error.httpStatusCode = 400
+    return next(error)
+  }
+  res.send(file)
+})
 
 router.get('/', (req, res) => {
   connection.query("Select * from clients", (err, rows, fields) => {
@@ -30,10 +57,11 @@ router.post('/', (req, res) => {
   let dob = req.body.dob;
   let vatId = req.body.vatId;
   let taxCode = req.body.taxCode;
+  let file = req.body.file;
   connection.query("Insert into `clients`\
-       (`active`,`clientName`,`clientSurname`,`language`,`addr1`,`addr2`,`city`,`state`,`zipCode`,`country`,`phoneNumber`,`faxNumber`,`mobileNumber`,`emailAddress`,`webAddress`,`crmId`,`gender`,`dob`,`vatId`,`taxCode`)\
-       Values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", [active, clientName, clientSurname, language, addr1, addr2, city, state, zipCode, country,
-    phoneNumber, faxNumber, mobileNumber, emailAddress, webAddress, crmId, gender, dob, vatId, taxCode
+       (`active`,`clientName`,`clientSurname`,`language`,`addr1`,`addr2`,`city`,`state`,`zipCode`,`country`,`phoneNumber`,`faxNumber`,`mobileNumber`,`emailAddress`,`webAddress`,`crmId`,`gender`,`dob`,`vatId`,`taxCode`,`file`)\
+       Values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", [active, clientName, clientSurname, language, addr1, addr2, city, state, zipCode, country,
+    phoneNumber, faxNumber, mobileNumber, emailAddress, webAddress, crmId, gender, dob, vatId, taxCode, file
   ], (err, rows, fields) => {
     if (err) throw err
     res.send({
@@ -81,10 +109,11 @@ router.post('/update/:id', (req, res) => {
   let dob = req.body.dob;
   let vatId = req.body.vatId;
   let taxCode = req.body.taxCode;
+  let file = req.body.file;
   connection.query(" Update clients set \
-       active=?,clientName=?,clientSurname=?,language=?,addr1=?,addr2=?,city=?,state=?,zipCode=?,country=?,phoneNumber=?,faxNumber=?,mobileNumber=?,emailAddress=?,webAddress=?,crmId=?,gender=?,dob=?,vatId=?,taxCode=?\
+       active=?,clientName=?,clientSurname=?,language=?,addr1=?,addr2=?,city=?,state=?,zipCode=?,country=?,phoneNumber=?,faxNumber=?,mobileNumber=?,emailAddress=?,webAddress=?,crmId=?,gender=?,dob=?,vatId=?,taxCode=?,file=?\
        Where id=?", [active, clientName, clientSurname, language, addr1, addr2, city, state, zipCode, country,
-    phoneNumber, faxNumber, mobileNumber, emailAddress, webAddress, crmId, gender, dob, vatId, taxCode, req.params.id
+    phoneNumber, faxNumber, mobileNumber, emailAddress, webAddress, crmId, gender, dob, vatId, taxCode, file, req.params.id
   ], (err, rows, fields) => {
     if (err) throw err
     res.send({
@@ -93,5 +122,6 @@ router.post('/update/:id', (req, res) => {
     })
   })
 })
+
 
 module.exports = router;

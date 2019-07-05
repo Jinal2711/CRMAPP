@@ -113,6 +113,10 @@
                 <option value="England">England</option>
               </select>
             </div>
+
+            <!-- ==========upload fiel ======== -->
+
+            <file-select v-model="file"></file-select>
           </div>
         </div>
       </div>
@@ -242,10 +246,15 @@
   </div>
 </template>
 <script>
+import FileSelect from "./fileInput.vue";
 export default {
+  components: {
+    "file-select": FileSelect
+  },
   name: "add-client",
   data: function() {
     return {
+      file: null,
       active: "",
       clientName: "",
       clientSurname: "",
@@ -277,6 +286,7 @@ export default {
       })
         .then(res => res.json())
         .then(data => {
+          this.file = data.file;
           this.active = data.active;
           this.clientName = data.clientName;
           this.clientSurname = data.clientSurname;
@@ -316,6 +326,7 @@ export default {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
+          file: this.file,
           active: this.active == "1" ? 1 : 0,
           clientName: this.clientName,
           clientSurname: this.clientSurname,
@@ -354,6 +365,7 @@ export default {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
+          file: this.file,
           active: this.active == "1" ? 1 : 0,
           clientName: this.clientName,
           clientSurname: this.clientSurname,
